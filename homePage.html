@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>金立手机客户端</title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			/*一下是表头部分——————————————————————————————————————————————————*/
+			.topBorder{width: 100%;height: 8px;background: #F1F1F2 ;border:1px solid #BFBFBF;}
+			.header{width: 100%;height: 105px;}
+			.header img{margin: 27px 0px 0px 75px;}
+			.header_nav{width: 915px;height: 105px;float: right;}
+			.header_nav_box{width: 190px;height:20px;float: right;margin:10px 70px 0px 0px;line-height: 20px;}
+			.header_nav_box img{margin: 0;}
+			.header_nav_box a{font-size: 11px;color: #9F9F9F;text-decoration: none;}
+			.header ul{width: 915px;height: 30px;list-style: none;margin-top: 60px;}
+			.header ul li {width: 90px;height: 30px;float: left;font-size: 18px;line-height: 30px;}
+			.header ul li:nth-child(7){width: 123px;}
+			.header ul li a{text-decoration: none;color: black;}
+			/*一下是主体——————————————————————————————————————————————-*/
+			.content{width: 100%;height: 2190px;background:#F1F1F1;}
+			.bgLog,.category,.product,.nav{margin: 0 auto;}
+			/*下是背景展示log————————————————————————————————————————————————————*/
+			.bgLog{width: 1192px;height: 350px;background:url(img/bglog.jpg);}
+			/*以下是产品类别区分——————————————————————————————————————————————————————————————————————*/
+			.category{width: 1192px;height: 241px;border-bottom: 3px solid #DDDDDD;margin-top: 20px;}
+			.category li{width: 1192px;height: 60px;list-style: none;border-bottom: 1px solid #E9E9E9;line-height: 60px;font-size:14px;
+						font-family:Microsoft YaHei;}
+			.category li a{text-decoration: none;color: black;}			
+			/*以下是产品展示————————————————————————————————————————————————————————————————————————————————————*/
+			.product{width: 1192px;height: 1473px;}
+			.product ul li{width: 296px;height: 490px;border: 1px solid #eeeeee;float: left;list-style: none;position: relative;}
+			.product_img_one{width: 80px;height: 330px;float: left;margin-top: 50px;}
+			.product_img_two{width: 210px;height: 345px;float: left;margin-top: 35px;}
+			.product_three{width:296px;height:112px;float: left;text-align: center;padding-top: 15px;line-height: 23px;}
+			.product h1{font-size: 15px;}
+			.product h2{font-size: 14px;font-weight: 400;color: #999999;}
+			.product h3{color: #EF4222;font-size: 20px;}
+			#comment_box{width: 286px;height: 95px;background:rgba(241,85,56,0.9);display: none;position: absolute;top: 380px;/*overflow: hidden;*/
+						padding: 15px 5px 0px 5px;}
+			#comment_box h2{color: white;margin-bottom: 15px;}
+			#comment_box_link{width: 124px;height: 40px;background: white;margin: 0 auto;border-radius: 5px;text-align: center;}
+			#comment_box_link a{line-height: 40px;color: #F15538;text-decoration: none;}
+			.product ul li:hover #comment_box{display: block;/*transition: all 1s ease;transform: translateY(-112px);*/}
+			/*以下为页码导航————————————————————————————————————————————————————————————————————————————————————————*/
+			.nav{width: 1192px;height: 70px;margin-top: 17px;}
+			.nav ul{width: 180px;height: 30px;list-style: none;margin:0 auto;padding: 20px;}
+			.nav ul li{width: 30px;height: 28px;border: 1px solid #DDDDDD;float: left;text-align: center;line-height: 28px;}
+			.nav ul li:nth-child(5){width: 50px;}
+			/*以下是产品保证————————————————————————————————————————————————————————————————————————————————————————*/
+			.ensure{width: 100%;height: 150px;overflow: hidden;}
+			.ensure ul{list-style: none;width: 1154px;height: 50px;margin: 60px 0px 0px 80px;}
+			.ensure ul li{float: left;line-height: 24px;width: 140px;height: 50px;margin-right: 140px;}
+			.ensure dt,.ensure dd{float: left;}
+			.ensure dt{margin-right: 10px;}
+			.ensure a{color: #777777;}
+			/*以下是为产品帮助以及附加功能——————————————————————————————————————————————————————————————————————————*/
+			.asider{width: 100%;height: 260px;border-top: 1px solid #DDDDDD;overflow: hidden;}
+			.asider table{margin: 40px 0px 0px 80px;}
+			.asider table tr th{font-size: 15px;font-weight: 500;}
+			.asider table tr{height: 30px;text-align: left;font-size: 12px;color: #777777;}
+			/*以下是页脚注释——————————————————————————————————————————————————————————————————————————————————*/
+			.footer{width: 100%;height: 158px;background:#333333;font-size: 13px;color: #777777;overflow: hidden}
+			#footerBox{width: 800px;height: 100px;margin: 25px 0px 0px 80px;}
+			.footer_box{width: 800px;height: 50px;padding-top: 10px;}
+			.footer dt,.footer dd{float: left;}
+			.footer dd{line-height: 21px;}
+		</style>
+	</head>
+	<body>
+		<!--一下是表头部分-->
+		<div class="topBorder"></div>
+		<div class="header">
+			<img src="img/log.png"/>
+			<div class="header_nav">
+				<div class="header_nav_box">
+					<span><a href="">您好，请登录&nbsp;|</a></span>
+					<span><a href="">注册</a>&nbsp;&nbsp;&nbsp;<a href=""><img src="img/be.png"/>购物车</a></span>
+				</div>
+				<ul>
+					<li><a href="">首页</a></li>
+					<li><a href="">手机</a></li>
+					<li><a href="">配件</a></li>
+					<li><a href="">服务</a></li>
+					<li><a href="">下载</a></li>
+					<li><a href="">社区</a></li>
+					<li><a href="">amigoOS</a></li>
+					<li><input type="text"value="输入搜索内容" /></li>
+				</ul>
+			</div>
+		</div>
+		<!--一下是主体————————————————————————————————————————————————————————————————————————————————-->
+		<div class="conter">
+			<!--一下是背景展示log————————————————————————————————————————————————————————————-->
+			<div class="bgLog"></div>
+			<!--以下是产品类别区分——————————————————————————————————————————————————————————————————————-->
+			<div class="category">
+				<form action="" method="post">
+					<ul>
+						<li>手机分类：
+							<a href=""><input type="checkbox" />全部</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />智能手机</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />功能手机</a>
+						</li>
+						<li>手机外观：
+							<a href=""><input type="checkbox" />全部</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />触屏</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />直板</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />翻盖</a>
+						</li>
+						<li>手机系类：
+							<a href=""><input type="checkbox" />全部</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />M系列</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />S系列</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />天鉴系列</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />F系列</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />金刚系列</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />其他系列</a>
+						</li>
+						<li>排序方式：
+							<a href=""><input type="checkbox" />上架时间</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />价格</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a href=""><input type="checkbox" />销量</a>
+						</li>
+					</ul>
+				</form>
+			</div>
+			<!--以下是产品展示——————————————————————————————————————————————————————————————————————-->
+			<div class="product">
+					<ul>
+						<li>
+							<div class="product_img_one">
+							<img src="img/xinpin.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/1.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							<img src="img/xinpin.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/2.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							<img src="img/remai.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/3.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							<img src="img/remai.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/4.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							<img src="img/xinpin.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/5.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							<img src="img/xinpin.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/6.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							<img src="img/xinpin.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/7.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							<img src="img/remai.png"/>
+							</div>
+							<div class="product_img_two">
+								<img src="img/8.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							</div>
+							<div class="product_img_two">
+								<img src="img/9.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							</div>
+							<div class="product_img_two">
+								<img src="img/10.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							</div>
+							<div class="product_img_two">
+								<img src="img/11.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="product_img_one">
+							</div>
+							<div class="product_img_two">
+								<img src="img/12.png"/>
+							</div>
+							<div class="product_three">
+								<h1>金立M2017</h1>
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<h3>￥6999</h3>
+							</div>
+							<div id="comment_box">
+								<h2>7000mAh电池、5.7英寸2K曲面屏、骁龙处理</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+			</div>
+			<!--以下为页码导航————————————————————————————————————————————————————————————————————————-->
+			<div class="nav">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>下一页</li>
+				</ul>
+			</div>
+		</div>
+		<!--以下是产品保证——————————————————————————————————————————————————————————————————————————-->
+		<div class="ensure">
+			<ul>
+				<li>
+					<a href="">
+						<dt><img src="img/th.png"/></dt>
+						<dd>7天<br/>退货承若</dd>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<dt><img src="img/hh.png"/></dt>
+						<dd>30天<br/>换货承若</dd>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<dt><img src="img/my.png"/></dt>
+						<dd>99元起<br/>全程免运费</dd>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<dt><img src="img/sh.png"/></dt>
+						<dd>579家<br/>售后服务点</dd>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--以下是为产品帮助以及附加功能————————————————————————————————————————————————————————————————-->
+		<div class="asider">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<colgroup span="4"style="width: 215px;"></colgroup>
+				<colgroup span="1"style="width: 80px;"></colgroup>
+				<tr><th>关于金立</th><th>新闻资讯</th><th>购物指南</th><th>售后服务</th><th>关注我们</th></tr>
+				<tr><td>企业荣誉</td><td>公司新闻</td><td>购物流程</td><td>售后政策</td><td>新浪微博</td>
+				<tr><td>金立体验店</td><td>媒体报道</td><td>支付方式</td><td>售后服务网点</td><td>腾讯微博</td>
+				<tr><td>代理商专区</td><td>金立月刊</td><td>配送说明及费用</td><td>上门维修</td><td>QQ空间</td>
+				<tr><td>加入金立</td><td>Data</td><td>订单管理</td><td>签收须知</td><td>Data</td>
+				<tr><td>联系我们</td><td></td><td>购买常见问题</td><td>物流查询</td><td>Data</td>
+			</table>
+		</div>
+		<!--以下为本网页页脚信息备注——————————————————————————————————————————————————————————————————-->
+		<div class="footer">
+			<div id="footerBox">
+				<p>网站地图&nbsp;&nbsp;|&nbsp;&nbsp;集团下属公司</p>
+				<div class="footer_box">
+					<p style="float: left;line-height: 45px;">增值电信业务经营许可证：粤B2-20120350 粤ICP备05087105号 粤网文[2013]029-029号 粤文市审[2012]196号
+						<dt><img src="img/a.png"/></dt><dt><img src="img/b.png"/></dt><dd>公共信息安<br/>全网络监查</dd>
+					</p>
+				</div>
+					<div style="clear: left;"></div>
+				<p>Copyright © 2013 深圳市金立通信设备有限公司 版权所有 .</p>
+			</div>
+		</div>
+	</body>
+</html>

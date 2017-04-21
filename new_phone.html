@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			/*公共部分————————————————————————————————————————————————————————*/
+			.clear{clear: both;}  li{list-style: none;} a{text-decoration: none;}
+			/*表头头部————————————————————————————————————————————————————————————*/
+			.box_header{width: 100%;height: 103px;position: fixed;background: #ffffff;border-bottom:2px solid #dfdfdf;z-index: 100;}
+			.header{width: 1190px;height: 103px;margin: 0 auto;}
+			.header_log{width: 200px;height: 51px;float: left;margin-top: 28px;}
+			.header_nav{width: 600PX;height: 103PX;float: left;margin-left: 150px;}
+			.header_nav li{line-height: 103px;width:85px;float: left;}
+			.header_nav li a{color:#2f2f2f}
+			.header_nav li a:hover{color:#EF4222}
+			.header_login{width: 180px;height: 20px;float: right;margin-top: 15px;}
+			.header_login .five{float: right;}
+			.header_login dt,dd{float: right;}
+			.header_login dd{margin:2px 3px 0px 0px;}
+			.header_login .four{display: none;}
+			.header_login .five:hover .three{display:none;}
+			.header_login .five:hover .four{display:block;}
+			.header_login a{color: #9f9f9f;font-size:11px;}
+			.header_login a:hover{color:#EF4222}
+			.header_search_box{width: 172px;height: 32px;background: url(img/search_17.gif);float: right;position: relative;margin-top: 20px;}
+			.header_search_box span{position: absolute;margin-left: 5px;line-height: 30px;color: #7f7f7f;font-size:13px;}
+			.header_search_box .txt{width: 136px;height: 29px;border: none;margin:1px 0px 0px 3px;outline: none;}
+			.header_search_box .but{width: 30px;height: 29px;opacity: 0.7;border: none;position: absolute;outline: none;}
+			/*以下是内容部分人——————————————————————————————————————————————————————————————————————————*/
+			#content{height: 2220px;background: #eaeaea;position: relative;top: 105px;}
+			/*以下是宣传图——————————————————————————————————————————————————————————————————*/
+			.bg_log{width: 1190px;height: 350px;margin: 0 auto;}
+			/*以下是选项栏————————————————————————————————————————————————————————————————————————*/
+			.content_select{width: 1143px;height: 225px;margin: 0 auto;background: white;margin-top: 20px;border-bottom:2px solid #dfdfdf;padding: 0px 25px 0px 25px;}
+			.content_select ul{width:1152px;height:56px;border-bottom: 1px solid #dfdfdf;line-height: 56px;}
+			.content_select span{display: block;float: left;font-size: 15px;}
+			.content_select ul li{float: left;margin-right: 30px;}
+			.content_select ul li input{float: left;margin: 23px 0px 0px 5px;}
+			.content_select ul li a{color: #2F2F2F;font-size: 15px;}
+			.content_select ul li a:hover{color: #EF4222;}
+			/*以下是产品列表——————————————————————————————————————————————*/
+			.content_list{width: 1190px;height: 1510px;margin: 0 auto;}
+			.content_list_one{width: 1192px;height: 498px;}
+			.list_one_phone{width: 297px;height: 497px;background: white;border-bottom: 1px solid #9F9F9F;border-right: 1px solid #9F9F9F;float: left;position: relative;overflow: hidden;}
+			.content_list .content_list_one:last-child .list_one_phone{border-bottom: none 0;}
+			.content_list ul li:nth-child(4){border-right: none;}
+			.list_one_phone h3,.list_one_phone span,.list_one_phone p{text-align: center;margin-top: 5px;}
+			.list_one_phone h3{font-size: 15px;}
+			.list_one_phone span{display: block;color: #878787;font-size: 13px;}
+			.list_one_phone p{font-weight: 600;color: #EF4222;font-size: 17px;}
+			.content_footerBox{width:287px;height: 120px;background: rgba(240,84,55,0.95);position: relative;bottom:-23px;padding:15px 5px 0px 5px;}
+			.content_footerBox h2{color: white;margin-bottom: 23px;font-size: 13px;text-align: center;}
+			#comment_box_link{width: 124px;height: 40px;background: white;margin: 0 auto;border-radius: 5px;text-align: center;}
+			#comment_box_link a{line-height: 40px;color: #F15538;text-decoration: none;}
+			.content_list ul li:hover .content_footerBox{transition: all 1s ease;transform: translateY(-120px);}
+			/*以下为页数切换部分——————————————————————————————————————————*/
+			.content_page{width: 1190px;height: 70px;background: white;margin: 0 auto;}
+			.content_page ul{width: 180px;height: 30px;list-style: none;margin:0 auto;padding: 20px;}
+			.content_page ul li{width: 30px;height: 28px;border: 1px solid #DDDDDD;float: left;text-align: center;line-height: 28px;}
+			.content_page ul li:nth-child(5){width: 50px;}
+			.content_page ul li:hover a{color: #EF4222;}
+			/*以下是7天保证部分——————————————————————————————————————————————————*/
+			.seven{width: 1190px;height: 150px;margin: 0 auto;margin-top: 90px;}
+			.seven dl{width: 290px;height: 50px; float: left;margin-top: 60px;}
+			.seven dd,dt{float: left;}
+			.seven dt{margin-right: 10px;}
+			.seven dd a{color: #252525;font-size: 15px;}
+			.seven dd a:hover{color: #EF4222;}
+			/*以下是网页相关内容——————————————————————————————————————————————*/
+			.about{width: 1190px;height: 260px;margin: 0 auto;}
+			.about ul{float: left;width: 216px; margin-top:35px;}
+			.about ul li a{color:#252525;line-height: 33px;font-size:small;}
+			.about ul li a:hover{color: #EF4222;}
+			.about ul li {clear: both;}
+			.about ul li dd,dt{float: left;}
+			.about ul li dd{margin-top: 5px;}
+			.about ul li .two{display: none;}
+			.about ul li:hover .one{display: none;}
+			.about ul li:hover .two{display: block;}
+			.about .orCode{width: 109px;}
+			/*以下是页脚部分——————————————————————————————————————————————————————————*/
+			.footer{width: 100%;height: 158px;background:#333333;font-size: 13px;color: #777777;overflow: hidden}
+			#footerBox{width: 800px;height: 100px;margin: 25px 0px 0px 80px;}
+			.footer_box{width: 800px;height: 50px;padding-top: 10px;}
+			.footer dt,.footer dd{float: left;}
+			.footer dd{line-height: 21px;}
+		</style>
+	</head>
+	<body>
+		<div class="box_header">
+			<div class="header">
+				<div class="header_log">
+				<img src="img/log.png"/>
+				</div>
+				<div class="header_nav li">
+					<ul>
+						<li><a href="#">首页</a></li>
+						<li><a href="#">手机</a></li>
+						<li><a href="#">配件</a></li>
+						<li><a href="#">服务</a></li>
+						<li><a href="#">下载</a></li>
+						<li><a href="#">社区</a></li>
+						<li><a href="#">amigoOS</a></li>
+					</ul>
+				</div>
+				<div class="header_login">
+					<a href="#">您好，请登录</a>
+					<span>|</span>
+					<a href="#">注册&nbsp;&nbsp;</a>
+					<div class="five">
+						<dt><a href="#">购物车</a></dt>
+						<dd class="three"><img src="img/shoppCar_03.gif"/></dd>
+						<dd class="four"><img src="img/re.png"/></dd>
+					</div>
+				</div>
+				<div class="header_search">
+					<div class="header_search_box">
+						<label>
+							<span>请输入搜索内容</span>
+							<input type="text" class="txt" />
+						</label>
+						<input type="button" class="but">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--以下是内容部分—————————————————————————————————————————————————————————————————-->
+		<div id="content">
+			<!--以下是背景log——————————————————————————————————————————————————————————————-->
+			<div class="bg_log">
+				<img src="img/banner.jpg"/>
+			</div>
+			<!--以下是选项栏————————————————————————————————————————————————-->
+			<div class="content_select">
+				<ul>
+					<span>手机分类：</span>
+					<li>
+						<input type="checkbox"/>
+						<a href="">全部</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">智能手机</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">功能手机</a>
+					</li>
+				</ul>
+				<ul>
+						<span>手机外观：</span>
+					<li>
+						<input type="checkbox"/>
+						<a href="">全部</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">触屏</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">直板</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">翻盖</a>
+					</li>
+				</ul>
+				<ul>
+						<span>手机系列：</span>
+					<li>
+						<input type="checkbox"/>
+						<a href="">全部</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">M系列</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">S系列</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">天鉴系列</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">F系列</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">金刚系列</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">其他机型</a>
+					</li>
+				</ul>
+				<ul>
+						<span>排序方式：</span>
+					<li>
+						<input type="checkbox"/>
+						<a href="">上架时间</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">价格</a>
+					</li>
+					<li>
+						<input type="checkbox"/>
+						<a href="">销量</a>
+					</li>
+				</ul>
+			</div>
+			<!--以下是产品列表————————————————————————————————————————————————————-->
+			<div class="content_list">
+				<ul class="content_list_one">
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+				</ul>
+				<ul class="content_list_one">
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+				</ul>
+				<ul class="content_list_one">
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+					<li class="list_one_phone">
+						<img src="img/l4_03.gif"/>
+						<h3>金刚2</h3>
+						<span>4000mAh电池，全网通4G VoLTE，3GB运存</span>
+						<p>￥1299</p>
+						<div class="content_footerBox">
+							<h2>4000mAh电池，全网通4G VoLTE，3GB运存</h2>
+								<div id="comment_box_link">
+									<a href="">查看详情》》</a>
+								</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<!--以下是页数切换部分————————————————————————————————————————————-->
+			<div class="content_page">
+				<ul>
+					<li><a href="">1</a></li>
+					<li><a href="">2</a></li>
+					<li><a href="">3</a></li>
+					<li><a href="">4</a></li>
+					<li><a href="">下一页</a></li>
+				</ul>
+			</div>
+			<!--以下是-->
+		</div>
+		<!--以下是7天保证——————————————————————————————————————————————————————————-->
+		<div class="seven">
+			<dl>
+				<dt><img src="img/s1_03.gif"/></dt>
+				<dd>
+					<a href="">
+						<p>7天</p>
+						<p>退货保证</p>
+					</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="img/hh.png"/></dt>
+				<dd>
+					<a href="">
+						<p>30天</p>
+						<p>换货承诺</p>
+					</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="img/s1_03.gif"/></dt>
+				<dd>
+					<a href="">
+						<p>99元</p>
+						<p>全场免运费</p>
+					</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt><img src="img/s1_03.gif"/></dt>
+				<dd>
+					<a href="">
+						<p>579家</p>
+						<p>售后服务点</p>
+					</a>
+				</dd>
+			</dl>
+		</div>
+		<hr/ style="border: 0; border-bottom: 1px solid #cfcfcf;">
+		<div class="about">
+			<ul>
+				<p>关于金立</p>
+				<li><a href="">企业荣誉</a></li>
+				<li><a href="">金立体验店</a></li>
+				<li><a href="">代理商专区</a></li>
+				<li><a href="">加入金立</a></li>
+				<li><a href="">联系我们</a></li>
+			</ul>
+			<ul>
+				<p>新闻资讯</p>
+				<li><a href="">公司新闻</a></li>
+				<li><a href="">媒体报道</a></li>
+				<li><a href="">金立月刊</a></li>
+			</ul>
+			<ul>
+				<p>购物指南</p>
+				<li><a href="">购物流程</a></li>
+				<li><a href="">支付方式</a></li>
+				<li><a href="">配送说明及费用</a></li>
+				<li><a href="">订单管理</a></li>
+				<li><a href="">购买常见问题</a></li>
+			</ul>
+			<ul>
+				<p>售后服务</p>
+				<li><a href="">售后政策</a></li>
+				<li><a href="">售后服务网点</a></li>
+				<li><a href="">签收须知</a></li>
+				<li><a href="">物流查询</a></li>
+			</ul>
+			<ul class="">
+				<p>关注我们</p>
+				<li>
+					<a href="">
+					<dd class="one"><img src="img/xla.png"/></dd>
+					<dd class="two"><img src="img/xlm.png"/></dd>
+					<dt>新浪微博</dt>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<dd class="one"><img src="img/txa.png"/></dd>
+						<dd class="two"><img src="img/txm.png"/></dd>
+						<dt>腾讯微博</dt>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<dd class="one"><img src="img/qqa.png"/></dd>
+						<dd class="two"><img src="img/qqm.png"/></dd>
+						<dt>QQ空间</dt>
+					</a>
+				</li>
+			</ul>
+			<ul class="orCode">
+				<li><img src="img/erweima_10.gif"/></li>
+			</ul>
+		</div>
+		<!--以下是页脚部分——————————————————————————————————————————————————-->
+		<div class="footer">
+			<div id="footerBox">
+				<p>网站地图&nbsp;&nbsp;|&nbsp;&nbsp;集团下属公司</p>
+				<div class="footer_box">
+					<p style="float: left;line-height: 45px;">增值电信业务经营许可证：粤B2-20120350 粤ICP备05087105号 粤网文[2013]029-029号 粤文市审[2012]196号
+						<dt><img src="img/a.png"/></dt><dt><img src="img/b.png"/></dt><dd>公共信息安<br/>全网络监查</dd>
+					</p>
+				</div>
+					<div style="clear: left;"></div>
+				<p>Copyright © 2013 深圳市金立通信设备有限公司 版权所有 .</p>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload=function(){
+			var text=document.getElementsByClassName("txt")[0];
+			text.onfocus=function(){
+				this.previousElementSibling.style.display="none";
+				this.onblur=function(){
+					if(this.value==""){
+						this.previousElementSibling.style.display="block";
+					}
+				}
+			}
+		}
+	</script>
+</html>
